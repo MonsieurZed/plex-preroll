@@ -1,0 +1,17 @@
+---
+# Plex Preroll Manager - compose.yaml pour utilisateurs finaux
+# Image: https://hub.docker.com/r/monsieurzed/plex-preroll
+services:
+  plex-preroll:
+    image: monsieurzed/plex-preroll:latest
+    container_name: plex-preroll
+    environment:
+      - PLEX_URL=http://<PLEX_IP>:32400
+      - PLEX_TOKEN=<VOTRE_TOKEN_PLEX>
+      - PLEX_PREROLL_PATH=/prerolls
+    volumes:
+      - ./data:/data
+      - /path/to/your/prerolls:/prerolls:ro
+    ports:
+      - "3000:3000"
+    restart: unless-stopped

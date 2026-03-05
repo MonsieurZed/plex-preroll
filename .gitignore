@@ -1,0 +1,9 @@
+data/
+__pycache__/
+*.pyc
+.env
+*.env
+nohup.out
+.idea/
+.vscode/
+*.log

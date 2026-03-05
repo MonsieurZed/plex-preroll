@@ -1,0 +1,43 @@
+/**
+ * Styles du sélecteur de langue (drapeaux emoji).
+ * Atom indépendant chargé dans le header.
+ */
+
+.lang-switcher {
+  display: flex;
+  align-items: center;
+  gap: 0.2rem;
+  flex-shrink: 0;
+}
+
+.lang-btn {
+  background: none;
+  border: 1px solid transparent;
+  border-radius: var(--radius-sm);
+  cursor: pointer;
+  font-size: 1.2rem;
+  line-height: 1;
+  padding: 0.15rem 0.25rem;
+  opacity: 0.55;
+  color: white;
+  transition:
+    opacity var(--transition),
+    border-color var(--transition),
+    background var(--transition);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.lang-btn:hover {
+  opacity: 1;
+  background: color-mix(in srgb, var(--accent) 15%, transparent);
+  border-color: color-mix(in srgb, var(--accent) 40%, transparent);
+}
+
+.lang-btn--active {
+  opacity: 1;
+  border-color: var(--accent);
+  background: color-mix(in srgb, var(--accent) 25%, transparent);
+  box-shadow: 0 0 0 1px var(--accent);
+}

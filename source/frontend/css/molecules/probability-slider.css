@@ -1,0 +1,32 @@
+.probability-slider {
+    background: var(--bg-card);
+    border-radius: var(--radius);
+    padding: 1rem 1.25rem;
+    border: 1px solid var(--border);
+}
+
+.probability-slider__header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 0.75rem;
+}
+
+.probability-slider__label {
+    font-size: 0.875rem;
+    font-weight: 500;
+}
+
+.probability-slider__value {
+    font-size: 1.1rem;
+    font-weight: 700;
+    color: var(--accent);
+    min-width: 3ch;
+    text-align: right;
+}
+
+.probability-slider__help {
+    font-size: 0.75rem;
+    color: var(--text-muted);
+    margin-top: 0.5rem;
+}

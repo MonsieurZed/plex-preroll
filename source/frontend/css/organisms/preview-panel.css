@@ -1,0 +1,253 @@
+.info-panel {
+  padding: 0.6rem 0.8rem;
+  border-bottom: 1px solid var(--border);
+  background: var(--bg-secondary);
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+  flex-shrink: 0;
+}
+
+.info-panel__row {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  flex-wrap: nowrap;
+}
+
+.info-panel__spacer {
+  flex: 1;
+}
+
+.preview-panel {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+.preview-panel__empty {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--text-muted);
+  font-size: 0.85rem;
+}
+
+.preview-panel__player {
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+  padding: 0.8rem;
+  margin-bottom: 1rem;
+}
+
+.preview-panel__video {
+  width: 100%;
+  max-height: 100%;
+  background: #000;
+  border-radius: var(--radius);
+  outline: none;
+}
+
+.preview-panel__error {
+  text-align: center;
+  padding: 2rem 1rem;
+  color: var(--error);
+  font-size: 0.8rem;
+  background: rgba(244, 67, 54, 0.1);
+  border-radius: var(--radius-sm);
+}
+
+.preview-panel__info {
+  display: flex;
+  flex-direction: column;
+  gap: 0.2rem;
+  padding: 0.2rem 0;
+}
+
+.preview-panel__filename {
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--text-primary);
+  word-break: break-all;
+}
+
+.preview-panel__path {
+  font-size: 0.72rem;
+  color: var(--text-muted);
+  word-break: break-all;
+}
+
+/* Découpe verticale de la colonne preview */
+.preview-split {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  min-height: 0;
+}
+
+.preview-split__top {
+  flex: 1 1 calc(50% - 5px);
+  border-bottom: 1px solid var(--border);
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  min-height: 0;
+}
+
+.preview-split__bottom {
+  flex: 1 1 calc(50% + 5px);
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  min-height: 0;
+}
+
+/* Bandeau de titre de l'éditeur de schedule */
+.season-editor__header {
+  padding: 0.4rem 0.6rem 0.4rem 0.8rem;
+  border-bottom: 1px solid var(--border);
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: var(--text-secondary);
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+  flex-shrink: 0;
+  background: var(--bg-secondary);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.5rem;
+}
+
+.season-editor__header-actions {
+  display: flex;
+  align-items: center;
+  gap: 0.35rem;
+  flex-shrink: 0;
+}
+
+.season-editor__editor-actions {
+  display: flex;
+  align-items: center;
+  gap: 0.35rem;
+}
+
+.season-editor__content {
+  flex: 1;
+  overflow-y: auto;
+  padding: 0.7rem 0.8rem;
+}
+
+.season-editor__content::-webkit-scrollbar {
+  width: 6px;
+}
+
+.season-editor__content::-webkit-scrollbar-thumb {
+  background: var(--border);
+  border-radius: 3px;
+}
+
+/* Formulaire inline de l'éditeur */
+.season-editor__empty {
+  text-align: center;
+  color: var(--text-muted);
+  font-size: 0.8rem;
+  padding: 1.5rem 0;
+}
+
+.season-editor__form {
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+}
+
+.season-editor__title-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.5rem;
+}
+
+.season-editor__title {
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--text-primary);
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.season-editor__toggle {
+  flex-shrink: 0;
+  min-width: 3rem;
+  text-align: center;
+}
+
+/* Deux colonnes pour nom et priorité */
+.season-editor__fields {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0.5rem;
+}
+
+.season-editor__group {
+  display: flex;
+  flex-direction: column;
+  gap: 0.2rem;
+}
+
+.season-editor__dates-row {
+  display: flex;
+  gap: 0.6rem;
+}
+
+.season-editor__skip-inline {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  padding: 0.2rem 0;
+}
+
+.season-editor__skip-inline .schedule-modal__label {
+  font-size: 0.7rem;
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+  color: var(--text-muted);
+  flex-shrink: 0;
+}
+
+.season-editor__skip-inline .slider-input {
+  width: 70px;
+  flex-shrink: 0;
+}
+
+.season-editor__skip-hint {
+  font-size: 0.7rem;
+  color: var(--text-muted);
+  cursor: help;
+  flex-shrink: 0;
+  opacity: 0.7;
+}
+
+.season-editor__skip-hint:hover {
+  opacity: 1;
+  color: var(--accent);
+}
+
+.season-editor__actions {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  padding-top: 0.5rem;
+  border-top: 1px solid var(--border);
+}
+
+.season-editor__form-actions {
+  display: flex;
+  align-items: center;
+  gap: 0.35rem;
+}

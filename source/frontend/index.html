@@ -1,0 +1,133 @@
+<!doctype html>
+<html lang="fr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Plex Preroll Manager</title>
+
+    <link rel="stylesheet" href="/css/main.css" />
+    <link rel="stylesheet" href="/css/atoms/button.css" />
+    <link rel="stylesheet" href="/css/atoms/slider.css" />
+    <link rel="stylesheet" href="/css/atoms/lang-switcher.css" />
+    <link rel="stylesheet" href="/css/molecules/video-item.css" />
+    <link rel="stylesheet" href="/css/organisms/video-list.css" />
+    <link rel="stylesheet" href="/css/organisms/preview-panel.css" />
+    <link rel="stylesheet" href="/css/organisms/schedule-bar.css" />
+    <link rel="stylesheet" href="/css/organisms/schedule-calendar.css" />
+  </head>
+  <body>
+    <div class="app">
+      <header class="header">
+        <div class="header__left">
+          <h1 class="header__title">Plex Preroll</h1>
+        </div>
+        <div class="header__controls">
+          <div class="lang-switcher">
+            <button class="lang-btn" data-lang-btn="fr" title="Fran&#231;ais">&#127467;&#127479;</button>
+            <button class="lang-btn" data-lang-btn="en" title="English">&#127468;&#127463;</button>
+          </div>
+        </div>
+      </header>
+
+      <div class="schedule-bar-row">
+        <div class="schedule-legend-info">
+          <button class="schedule-legend-btn">&#9432;</button>
+          <div class="schedule-legend">
+            <span class="schedule-legend__item">
+              <span class="schedule-tab__dot schedule-tab__dot--active"></span>
+              <span data-i18n="legend_active">Actif</span>
+            </span>
+            <span class="schedule-legend__item">
+              <span class="schedule-tab__dot schedule-tab__dot--overridden"></span>
+              <span data-i18n="legend_overridden">Priorit&#233; inf&#233;rieure</span>
+            </span>
+            <span class="schedule-legend__item">
+              <span class="schedule-tab__dot schedule-tab__dot--enabled"></span>
+              <span data-i18n="legend_enabled">Hors p&#233;riode</span>
+            </span>
+            <span class="schedule-legend__item">
+              <span class="schedule-tab__dot schedule-tab__dot--off"></span>
+              <span data-i18n="legend_off">D&#233;sactiv&#233;</span>
+            </span>
+          </div>
+        </div>
+        <div class="schedule-bar" id="schedule-bar"></div>
+        <div class="schedule-bar-right">
+          <div class="header__status">
+            <span class="header__dot" id="status-dot"></span>
+            <span class="header__status-text" id="status-label"></span>
+          </div>
+          <button id="calendar-btn" class="btn btn--icon" data-i18n-title="calendar_btn_title" title="Voir le calendrier annuel">&#128197;</button>
+          <button id="plex-current-btn" class="btn btn--icon" data-i18n-title="plex_current_title" title="Voir la config Plex actuelle">&#128279;</button>
+          <button id="rescan-btn" class="btn btn--icon" data-i18n-title="rescan_title" title="Rescanner le dossier">&#x21BB;</button>
+          <button id="save-btn" class="btn btn--primary btn--sm" data-i18n="save_btn">Sauvegarder</button>
+        </div>
+      </div>
+
+      <div class="columns">
+        <div class="column">
+          <div class="column__header">
+            <h2 class="column__title" data-i18n="col_disabled">D&#233;sactiv&#233;es</h2>
+            <span class="column__count" id="count-disabled">0</span>
+          </div>
+          <div class="column__content" id="list-disabled"></div>
+        </div>
+        <div class="column">
+          <div class="column__header">
+            <h2 class="column__title" data-i18n="col_enabled">Activ&#233;es</h2>
+            <span class="column__count" id="count-enabled">0</span>
+          </div>
+          <div class="column__content" id="list-enabled"></div>
+        </div>
+        <div class="column column--preview">
+          <div class="preview-split">
+            <div class="preview-split__top">
+              <span id="stat-videos" style="display: none">0</span>
+              <span id="stat-chance" style="display: none">100</span>
+              <div class="season-editor__header">
+                <span data-i18n="modify_schedule">Modifier le schedule</span>
+                <div id="editor-header-btns" class="season-editor__header-actions"></div>
+              </div>
+              <div class="season-editor__content" id="season-editor-content"></div>
+            </div>
+            <div class="preview-split__bottom">
+              <div class="column__header">
+                <h2 class="column__title" data-i18n="col_preview">Aper&#231;u</h2>
+                <button id="autoplay-btn" class="btn btn--ghost btn--sm" data-i18n-title="autoplay_title" title="Lecture automatique au clic"></button>
+              </div>
+              <div class="preview-panel" id="preview-panel">
+                <div class="preview-panel__empty" id="preview-empty" data-i18n="select_video">S&#233;lectionnez une vid&#233;o</div>
+                <div class="preview-panel__player" id="preview-player" style="display: none">
+                  <video class="preview-panel__video" id="preview-video" controls preload="metadata"></video>
+                  <div class="preview-panel__error" id="preview-error" style="display: none">Format non support&#233; par le navigateur</div>
+                  <div class="preview-panel__info">
+                    <div class="preview-panel__filename" id="preview-filename"></div>
+                    <div class="preview-panel__path" id="preview-path"></div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <footer class="footer">
+      <span class="footer__brand">Plex Preroll Manager</span>
+      <span class="footer__sep">&bull;</span>
+      <a class="footer__link" href="https://github.com/monsieurzed/plex-preroll" target="_blank" rel="noopener">GitHub</a>
+      <span class="footer__sep">&bull;</span>
+      <a class="footer__link" href="https://hub.docker.com/r/monsieurzed/plex-preroll" target="_blank" rel="noopener">Docker Hub</a>
+      <span class="footer__sep">&bull;</span>
+      <span class="footer__version">v1.0.0</span>
+    </footer>
+
+    <script src="/js/atoms/i18n.js"></script>
+    <script src="/js/api.js"></script>
+    <script src="/js/molecules/video-item.js"></script>
+    <script src="/js/organisms/video-list.js"></script>
+    <script src="/js/organisms/schedule-bar.js"></script>
+    <script src="/js/organisms/schedule-calendar.js"></script>
+    <script src="/js/app.js"></script>
+  </body>
+</html>
