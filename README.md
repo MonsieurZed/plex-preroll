@@ -10,52 +10,26 @@ Web interface to dynamically manage Plex Media Server pre-rolls. Schedule season
 ---
 
 ## Features
+Here is the simplified list of core features in English:
 
-### Video management
+### Video Management
+Intuitive Organization: Enable or disable videos using drag & drop between columns.
+Playback Weight: A weight badge (x1 to x10) sets the relative probability of a video appearing in the rotation.
+Integrated Preview: Direct video player to check content (Auto-play or Pause on first frame modes).
+"Skip" Slider: Define the probability of playing a pre-roll (e.g., a 20% chance to skip straight to the movie).
 
-- **Two columns** — enabled videos (included in the Plex rotation) and disabled videos
-- **Drag & drop** between columns to enable / disable a video
-- **Collapsible subfolder groups** with bulk actions (enable all / disable all)
-- **Cycling weight badge** on each video: `x1 → x2 → x5 → x10 → x1` — sets the relative probability of the video appearing in the Plex playlist
+### Seasonal Scheduling
+Smart Calendars: Create custom schedules (Christmas, Halloween, Summer) with specific start and end dates.
+Priority Logic: If periods overlap, the system automatically selects the high-priority one (Green for active, Orange for lower priority).
+Annual Grid: A 12-month view to see at a glance which schedule is active for every day of the year.
 
-### Preview
+### Plex Synchronization
+Sync Button: Instantly updates the Plex pre-roll string based on your changes.
+Direct Control: View the current Plex configuration and trigger a folder rescan without restarting the server.
 
-- **Auto mode** — click a video → immediate playback in the integrated player
-- **Pause mode** — click a video → loads and displays the first frame without playing
-- Visual selection (highlighted pill) of the currently previewed video
-- Displays filename and relative path
-
-### Seasonal schedules
-
-- **Schedule tabs** — one base schedule + N custom schedules (via the `+` button)
-- Each schedule has: name, priority, start date, end date, ON/OFF toggle
-- **ON/OFF toggle** saves directly via API without going through the Sync button
-- **Inline editor** in the preview panel: name, priority, date range, skip
-- **Skip slider** — probability of playing no pre-roll at all (0 % = always played, 100 % = never played)
-- **Color indicator** per tab: green (active), orange (lower priority), grey (out of period / OFF)
-- **Sync button** — saves video list changes to Plex
-- Cancel / Save / Delete buttons at the bottom of the schedule editor
-
-### Annual calendar
-
-- 12-month grid view (4×3), opened via the 📅 button
-- Each day is colored by the active schedule (priority resolution applied)
-- December → January wrap-around handled
-- Current day highlighted
-- Legend with per-schedule color dots
-
-### Plex configuration
-
-- **🔗 button** — shows the current `CinemaTrailersPrerollID` value read from the Plex API
-- **↻ button** — rescans the preroll folder without restarting
-- Plex playlist automatically synced after Sync
-
-### UI
-
-- **Bilingual FR / EN** — automatic browser language detection, manual switcher
-- Global status indicator (synced / unsaved / error) with colored dot
-- No frontend dependencies (vanilla JS / CSS, no framework)
-
+🖥️ UI & Status
+Status Indicator: A colored dot shows if changes are saved, synced, or if an error occurred.
+Bilingual Support: Quick toggle between French and English.
 ---
 
 ## Quick start
