@@ -1,12 +1,12 @@
 ---
-# Plex Preroll Manager - Gestion des pre-roll vidéos Plex
-# Services : API FastAPI + Frontend Nginx
+# Plex Preroll Manager - Dev (source montée, hot-reload frontend)
+# Accessible via preroll.dev.zed.cx → container plex-preroll-dev:3000
 services:
-  plex-preroll-api:
+  plex-preroll-dev-api:
     build:
       context: ./source/backend
       dockerfile: Dockerfile
-    container_name: plex-preroll-api
+    container_name: plex-preroll-dev-api
     env_file:
       - ../secrets/global.env
     environment:
@@ -20,11 +20,11 @@ services:
       - proxy
       - internal
     labels:
-      - com.centurylinklabs.watchtower.enable=true
+      - com.centurylinklabs.watchtower.enable=false
 
-  plex-preroll:
+  plex-preroll-dev:
     image: nginx:alpine
-    container_name: plex-preroll
+    container_name: plex-preroll-dev
     volumes:
       - ./source/frontend:/usr/share/nginx/html:ro
       - ./source/nginx-frontend.conf:/etc/nginx/conf.d/default.conf:ro
@@ -33,9 +33,9 @@ services:
       - proxy
       - internal
     labels:
-      - com.centurylinklabs.watchtower.enable=true
+      - com.centurylinklabs.watchtower.enable=false
     depends_on:
-      - plex-preroll-api
+      - plex-preroll-dev-api
 
 networks:
   proxy:
