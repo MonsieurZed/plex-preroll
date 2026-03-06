@@ -23,7 +23,7 @@ class Settings(BaseSettings):
 
     plex_url: str
     plex_token: str = ""
-    preroll_dir: str = "/data/prerolls"
+    preroll_dir: str = "/prerolls"
     plex_preroll_path: str
     config_path: str = "/data/config.json"
 

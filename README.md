@@ -44,7 +44,7 @@ services:
     environment:
       - PLEX_URL=http://<PLEX_IP>:32400
       - PLEX_TOKEN=<YOUR_PLEX_TOKEN>
-      - PLEX_PREROLL_PATH=/prerolls
+      - PLEX_PREROLL_PATH=/path/to/your/prerolls
     volumes:
       - ./data:/data
       - /path/to/your/prerolls:/prerolls:ro
